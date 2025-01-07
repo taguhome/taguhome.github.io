@@ -49,6 +49,10 @@ collection-langjapanese 1
 collection-latexextra 1
 collection-mathscience 1
 collection-binextra 1
+collection-⁠bibtexextra 1
+collection-⁠fontutils 1
+collection-⁠latex 1
+collection-⁠luatex 1
 
 tlpdbopt_install_docfiles 0
 tlpdbopt_install_srcfiles 0
@@ -487,7 +491,7 @@ function Install-VSCode() {
         "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "sml": "cd $dir && sml $fileName"
     },
-    // "C_Cpp.default.compilerPath": "c:\\Users\\tagur\\.vscode\\.vscode\\launch.json",
+    // "C_Cpp.default.compilerPath": "$ENV{'USERPROFILE'}\\.vscode\\.vscode\\launch.json",
     "C_Cpp.default.compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe",
     "C_Cpp.default.browse.path": [],
     "settingsSync.ignoredExtensions": [
