@@ -1,4 +1,4 @@
-# 電通大生のためのいちばんかんたんなLaTeX環境構築2024
+# いろいろ実験用
 
 ```pwsh
 powershell -NoProfile -ExecutionPolicy Bypass "iwr 'https://e-chan1007.github.io/setup-uec-paper-scripts/windows-wrapper.ps1' | iex"
