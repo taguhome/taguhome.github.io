@@ -679,6 +679,28 @@ VSCode + \LaTeX の環境構築が完了しました！
   Write-LabeledOutput  "Visual Studio Code" "インストールを完了しました"
 }
 
+$latexmkrcPath = "$env:TEMP/.latexmkrc"
+$convertBackslashToSlashPath = "$env:TEMP/convert_backslash_to_slash.ps1"
+$convertSvgToPdfPath = "$env:TEMP/convert_svgtopdf.ps1"
+$latexJsonPath = "$env:TEMP/latex.json"
+
+function Copy-AdditionalFiles() {
+  Write-LabeledOutput "ファイルコピー" ".latexmkrc をユーザーディレクトリにコピーしています..."
+  Copy-Item -Path "$latexmkrcPath" -Destination "$env:USERPROFILE/.latexmkrc" -Force
+
+  Write-LabeledOutput "ファイルコピー" "convert_backslash_to_slash.ps1 を .vscode にコピーしています..."
+  New-Item -ItemType Directory -Path "$env:USERPROFILE/.vscode" -Force > $null
+  Copy-Item -Path "$convertBackslashToSlashPath" -Destination "$env:USERPROFILE/.vscode/convert_backslash_to_slash.ps1" -Force
+
+  Write-LabeledOutput "ファイルコピー" "convert_svgtopdf.ps1 を .vscode にコピーしています..."
+  Copy-Item -Path "$convertSvgToPdfPath" -Destination "$env:USERPROFILE/.vscode/convert_svgtopdf.ps1" -Force
+
+  Write-LabeledOutput "ファイルコピー" "latex.json を VSCode ユーザースペースに反映しています..."
+  Copy-Item -Path "$latexJsonPath" -Destination "$vscodeSettingsDir/latex.json" -Force
+}
+
+
+
 if (Find-Executable "tlmgr") {
   if (Show-YesNoPrompt "TeX Live はすでにインストールされています。" "それでも TeX Live をインストールしますか?") {
     Install-TeXLive
